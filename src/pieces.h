@@ -6,12 +6,15 @@
 class Piece {
 protected:
     std::string name;
+    bool nullPiece;
     bool whitePiece;
 public:
     Piece();
     int positionX;
     int positionY;
     std::string getName();
+    bool isWhitePiece();
+    bool isNullPiece();
     virtual ~Piece() {};
 };
 
@@ -52,7 +55,8 @@ public:
 };
 
 class NullPiece: public Piece {
-
+public:
+    NullPiece();
 };
 
 #endif

@@ -10,6 +10,7 @@ std::string Piece::getName() {
 }
 
 Rook::Rook(bool whitePiece) {
+    this->nullPiece = false;
     if(whitePiece) {
         this->name = "R";
     } else if(!whitePiece) {
@@ -19,6 +20,7 @@ Rook::Rook(bool whitePiece) {
 }
 
 Bishop::Bishop(bool whitePiece) {
+    this->nullPiece = false;
     if(whitePiece) {
         this->name = "B";
     } else if(!whitePiece) {
@@ -28,6 +30,7 @@ Bishop::Bishop(bool whitePiece) {
 }
 
 Knight::Knight(bool whitePiece) {
+    this->nullPiece = false;
     if(whitePiece) {
         this->name = "N";
     } else if(!whitePiece) {
@@ -37,6 +40,7 @@ Knight::Knight(bool whitePiece) {
 }
 
 King::King(bool whitePiece) {
+    this->nullPiece = false;
     if(whitePiece) {
         this->name = "K";
     } else if(!whitePiece) {
@@ -46,6 +50,7 @@ King::King(bool whitePiece) {
 }
 
 Queen::Queen(bool whitePiece) {
+    this->nullPiece = false;
     if(whitePiece) {
         this->name = "Q";
     } else if(!whitePiece) {
@@ -55,6 +60,7 @@ Queen::Queen(bool whitePiece) {
 }
 
 Pawn::Pawn(bool whitePiece) {
+    this->nullPiece = false;
     if(whitePiece) {
         this->name = "P";
     } else if(!whitePiece) {
@@ -63,26 +69,16 @@ Pawn::Pawn(bool whitePiece) {
     this->whitePiece = whitePiece;
 }
 
-bool Rook::isWhitePiece() {
+NullPiece::NullPiece() {
+    this->name = ".";
+    this->whitePiece = false;
+    this->nullPiece = true;
+}
+
+bool Piece::isWhitePiece() {
     return this->whitePiece;
 }
 
-bool Bishop::isWhitePiece() {
-    return this->whitePiece;
-}
-
-bool Knight::isWhitePiece() {
-    return this->whitePiece;
-}
-
-bool King::isWhitePiece() {
-    return this->whitePiece;
-}
-
-bool Queen::isWhitePiece() {
-    return this->whitePiece;
-}
-
-bool Pawn::isWhitePiece() {
-    return this->whitePiece;
+bool Piece::isNullPiece() {
+    return this->nullPiece;
 }

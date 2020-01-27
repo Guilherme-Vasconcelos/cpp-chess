@@ -5,7 +5,7 @@
 
 Board::Board() {
     for(int i=0; i<8; ++i) {
-        Piece piece;
+        NullPiece piece;
         this->pieces.push_back(std::vector<Piece>(8, piece));
     }
 }
