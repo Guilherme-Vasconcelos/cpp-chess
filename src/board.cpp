@@ -20,3 +20,7 @@ void Board::showBoard() {
     }
     std::cout << ss.str() << std::flush;
 }
+
+void Board::place(Piece piece, char positionY, int positionX) {
+    this->piece.at(8 - positionX).at((int)positionY - 97) = piece;
+}

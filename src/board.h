@@ -10,6 +10,7 @@ public:
     Board();
     void showBoard();
     std::vector<std::vector<Piece>> piece;
+    void place(Piece piece, char positionY, int positionX);
 };
 
 #endif
