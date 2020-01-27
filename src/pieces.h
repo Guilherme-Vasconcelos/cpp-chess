@@ -6,48 +6,53 @@
 class Piece {
 protected:
     std::string name;
-    std::string color;
+    bool whitePiece;
 public:
     Piece();
     int positionX;
     int positionY;
     std::string getName();
+    virtual ~Piece() {};
 };
 
 class Rook: public Piece {
 public:
-    Rook(std::string color);
-    std::string getColor();
+    Rook(bool whitePiece);
+    bool isWhitePiece();
 };
 
 class Bishop: public Piece {
 public:
-    Bishop(std::string color);
-    std::string getColor();
+    Bishop(bool whitePiece);
+    bool isWhitePiece();
 };
 
 class Knight: public Piece {
 public:
-    Knight(std::string color);
-    std::string getColor();
+    Knight(bool whitePiece);
+    bool isWhitePiece();
 };
 
 class King: public Piece {
 public:
-    King(std::string color);
-    std::string getColor();
+    King(bool whitePiece);
+    bool isWhitePiece();
 };
 
 class Queen: public Piece {
 public:
-    Queen(std::string color);
-    std::string getColor();
+    Queen(bool whitePiece);
+    bool isWhitePiece();
 };
 
 class Pawn: public Piece {
 public:
-    Pawn(std::string color);
-    std::string getColor();
+    Pawn(bool whitePiece);
+    bool isWhitePiece();
+};
+
+class NullPiece: public Piece {
+
 };
 
 #endif

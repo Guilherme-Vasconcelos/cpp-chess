@@ -9,80 +9,80 @@ std::string Piece::getName() {
     return this->name;
 }
 
-Rook::Rook(std::string color) {
-    if(color == "white") {
+Rook::Rook(bool whitePiece) {
+    if(whitePiece) {
         this->name = "R";
-    } else if(color == "black") {
+    } else if(!whitePiece) {
         this->name = "r";
     }
-    this->color = color;
+    this->whitePiece = whitePiece;
 }
 
-Bishop::Bishop(std::string color) {
-    if(color == "white") {
+Bishop::Bishop(bool whitePiece) {
+    if(whitePiece) {
         this->name = "B";
-    } else if(color == "black") {
+    } else if(!whitePiece) {
         this->name = "b";
     }
-    this->color = color;
+    this->whitePiece = whitePiece;
 }
 
-Knight::Knight(std::string color) {
-    if(color == "white") {
+Knight::Knight(bool whitePiece) {
+    if(whitePiece) {
         this->name = "N";
-    } else if(color == "black") {
+    } else if(!whitePiece) {
         this->name = "n";
     }
-    this->color = color;
+    this->whitePiece = whitePiece;
 }
 
-King::King(std::string color) {
-    if(color == "white") {
+King::King(bool whitePiece) {
+    if(whitePiece) {
         this->name = "K";
-    } else if(color == "black") {
+    } else if(!whitePiece) {
         this->name = "k";
     }
-    this->color = color;
+    this->whitePiece = whitePiece;
 }
 
-Queen::Queen(std::string color) {
-    if(color == "white") {
+Queen::Queen(bool whitePiece) {
+    if(whitePiece) {
         this->name = "Q";
-    } else if(color == "black") {
+    } else if(!whitePiece) {
         this->name = "q";
     }
-    this->color = color;
+    this->whitePiece = whitePiece;
 }
 
-Pawn::Pawn(std::string color) {
-    if(color == "white") {
+Pawn::Pawn(bool whitePiece) {
+    if(whitePiece) {
         this->name = "P";
-    } else if(color == "black") {
+    } else if(!whitePiece) {
         this->name = "p";
     }
-    this->color = color;
+    this->whitePiece = whitePiece;
 }
 
-std::string Rook::getColor() {
-    return this->color;
+bool Rook::isWhitePiece() {
+    return this->whitePiece;
 }
 
-std::string Bishop::getColor() {
-    return this->color;
+bool Bishop::isWhitePiece() {
+    return this->whitePiece;
 }
 
-std::string Knight::getColor() {
-    return this->color;
+bool Knight::isWhitePiece() {
+    return this->whitePiece;
 }
 
-std::string King::getColor() {
-    return this->color;
+bool King::isWhitePiece() {
+    return this->whitePiece;
 }
 
-std::string Queen::getColor() {
-    return this->color;
+bool Queen::isWhitePiece() {
+    return this->whitePiece;
 }
 
-std::string Pawn::getColor() {
-    return this->color;
+bool Pawn::isWhitePiece() {
+    return this->whitePiece;
 }

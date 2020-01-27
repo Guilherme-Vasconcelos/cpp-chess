@@ -9,7 +9,7 @@ class Board {
 public:
     Board();
     void showBoard();
-    std::vector<std::vector<Piece>> piece;
+    std::vector<std::vector<Piece>> pieces;
     void place(Piece piece, char positionY, int positionX);
 };
 

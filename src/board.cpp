@@ -6,7 +6,7 @@
 Board::Board() {
     for(int i=0; i<8; ++i) {
         Piece piece;
-        this->piece.push_back(std::vector<Piece>(8, piece));
+        this->pieces.push_back(std::vector<Piece>(8, piece));
     }
 }
 
@@ -14,7 +14,7 @@ void Board::showBoard() {
     std::stringstream ss;
     for(int i=0; i<8; ++i) {
         for(int j=0; j<8; ++j) {
-            ss << this->piece.at(i).at(j).getName() << " " << std::flush;
+            ss << this->pieces.at(i).at(j).getName() << " " << std::flush;
         }
         ss << std::endl;
     }
@@ -22,5 +22,5 @@ void Board::showBoard() {
 }
 
 void Board::place(Piece piece, char positionY, int positionX) {
-    this->piece.at(8 - positionX).at((int)positionY - 97) = piece;
+    this->pieces.at(8 - positionX).at((int)positionY - 97) = piece;
 }
