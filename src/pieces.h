@@ -14,33 +14,51 @@ public:
 };
 
 class Rook: public Piece {
+private:
+    std::string color;
 public:
-    Rook();
+    Rook(std::string color);
+    std::string getColor();
 };
 
 class Bishop: public Piece {
+private:
+    std::string color;
 public:
-    Bishop();
+    Bishop(std::string color);
+    std::string getColor();
 };
 
 class Knight: public Piece {
+private:
+    std::string color;
 public:
-    Knight();
+    Knight(std::string color);
+    std::string getColor();
 };
 
 class King: public Piece {
+private:
+    std::string color;
 public:
-    King();
+    King(std::string color);
+    std::string getColor();
 };
 
 class Queen: public Piece {
+private:
+    std::string color;
 public:
-    Queen();
+    Queen(std::string color);
+    std::string getColor();
 };
 
 class Pawn: public Piece {
+private:
+    std::string color;
 public:
-    Pawn();
+    Pawn(std::string color);
+    std::string getColor();
 };
 
 #endif
