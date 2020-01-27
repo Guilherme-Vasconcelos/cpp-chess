@@ -9,74 +9,91 @@ std::string Piece::getName() {
     return this->name;
 }
 
-Rook::Rook(bool whitePiece) {
+Rook::Rook(Color color) {
     this->nullPiece = false;
-    if(whitePiece) {
-        this->name = "R";
-    } else if(!whitePiece) {
-        this->name = "r";
+    this->color = color;
+    switch(color) {
+        case Color::white:
+            this->name = "R";
+            break;
+        case Color::black:
+            this->name = "r";
+            break;
     }
-    this->whitePiece = whitePiece;
 }
 
-Bishop::Bishop(bool whitePiece) {
+Bishop::Bishop(Color color) {
     this->nullPiece = false;
-    if(whitePiece) {
-        this->name = "B";
-    } else if(!whitePiece) {
-        this->name = "b";
+    this->color = color;
+    switch(color) {
+        case Color::white:
+            this->name = "B";
+            break;
+        case Color::black:
+            this->name = "b";
+            break;
     }
-    this->whitePiece = whitePiece;
 }
 
-Knight::Knight(bool whitePiece) {
+Knight::Knight(Color color) {
     this->nullPiece = false;
-    if(whitePiece) {
-        this->name = "N";
-    } else if(!whitePiece) {
-        this->name = "n";
+    this->color = color;
+    switch(color) {
+        case Color::white:
+            this->name = "N";
+            break;
+        case Color::black:
+            this->name = "n";
+            break;
     }
-    this->whitePiece = whitePiece;
 }
 
-King::King(bool whitePiece) {
+King::King(Color color) {
     this->nullPiece = false;
-    if(whitePiece) {
-        this->name = "K";
-    } else if(!whitePiece) {
-        this->name = "k";
+    this->color = color;
+    switch(color) {
+        case Color::white:
+            this->name = "K";
+            break;
+        case Color::black:
+            this->name = "k";
+            break;
     }
-    this->whitePiece = whitePiece;
 }
 
-Queen::Queen(bool whitePiece) {
+Queen::Queen(Color color) {
     this->nullPiece = false;
-    if(whitePiece) {
-        this->name = "Q";
-    } else if(!whitePiece) {
-        this->name = "q";
+    this->color = color;
+    switch(color) {
+        case Color::white:
+            this->name = "Q";
+            break;
+        case Color::black:
+            this->name = "q";
+            break;
     }
-    this->whitePiece = whitePiece;
 }
 
-Pawn::Pawn(bool whitePiece) {
+Pawn::Pawn(Color color) {
     this->nullPiece = false;
-    if(whitePiece) {
-        this->name = "P";
-    } else if(!whitePiece) {
-        this->name = "p";
+    this->color = color;
+    switch(color) {
+        case Color::white:
+            this->name = "P";
+            break;
+        case Color::black:
+            this->name = "p";
+            break;
     }
-    this->whitePiece = whitePiece;
 }
 
 NullPiece::NullPiece() {
     this->name = ".";
-    this->whitePiece = false;
     this->nullPiece = true;
 }
 
-bool Piece::isWhitePiece() {
-    return this->whitePiece;
+Color Piece::getColor() {
+    return this->color;
 }
 
 bool Piece::isNullPiece() {
