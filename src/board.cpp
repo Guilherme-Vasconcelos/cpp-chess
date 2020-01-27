@@ -14,7 +14,7 @@ void Board::showBoard() {
     std::stringstream ss;
     for(int i=0; i<8; ++i) {
         for(int j=0; j<8; ++j) {
-            ss << this->piece.at(i).at(j).getName() << "   " << std::flush;
+            ss << this->piece.at(i).at(j).getName() << " " << std::flush;
         }
         ss << std::endl;
     }
