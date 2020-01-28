@@ -24,6 +24,7 @@ public:
     Piece get(char positionY, int positionX);
     void setFenPosition(std::string fen);
     const std::string initialFen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
+    void move(Piece, char initialY, int initialX, char finalY, int finalX);
 };
 
 #endif

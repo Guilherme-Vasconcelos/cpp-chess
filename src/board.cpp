@@ -78,3 +78,7 @@ void Board::setFenPosition(std::string fen) {
     }
     this->pieces = pieces;
 }
+
+void Board::move(Piece, char initialY, int initialX, char finalY, int finalX) {
+    
+}
