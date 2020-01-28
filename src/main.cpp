@@ -16,6 +16,8 @@
 int main() {
 
     Board board;
+
+    board.setFenPosition(board.initialFen);
     board.showBoard();
 
     return 0;

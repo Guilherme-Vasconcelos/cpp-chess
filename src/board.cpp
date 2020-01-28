@@ -58,6 +58,23 @@ void Board::setFenPosition(std::string fen) {
     piecesMap["K"] = King(Color::white);
     piecesMap["k"] = King(Color::black);
     for(int i=0; i<fen.size(); ++i) {
-
+        if(fen[i] == '/') {
+            pieces.push_back(row);
+            row.clear();
+        } else if((int)fen[i] >= 48 && (int)fen[i] <= 57) {
+            int ia = fen[i] - '0';
+            for(int j=0; j<ia; ++j) {
+                NullPiece nPiece;
+                row.push_back(nPiece);
+            }
+        } else {
+            std::string s(1, fen[i]);
+            row.push_back(piecesMap[s]);
+        }
+        if(i == fen.size() - 1) {
+            pieces.push_back(row);
+            row.clear();
+        }
     }
+    this->pieces = pieces;
 }
