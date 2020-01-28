@@ -42,3 +42,11 @@ void Board::setPieces(std::vector<std::vector<Piece>> pieces) {
 void Board::hardPlace(Piece piece, int positionX, int positionY) {
     this->pieces.at(positionX).at(positionY) = piece;
 }
+
+Piece Board::get(char positionY, int positionX) {
+    return this->pieces.at(8 - positionX).at((int)positionY - 97);
+}
+
+Piece Board::hardGet(int positionX, int positionY) {
+    return this->pieces.at(positionX).at(positionY);
+}

@@ -24,6 +24,8 @@ public:
     void place(Piece piece, char positionY, int positionX);
     void hardPlace(Piece piece, int positionX, int positionY);
     void setPieces(std::vector<std::vector<Piece>> pieces);
+    Piece get(char positionY, int positionX);
+    Piece hardGet(int positionX, int positionY);
 };
 
 #endif
