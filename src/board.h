@@ -48,23 +48,21 @@ public:
     /**
      * Method used to place a piece at the board instance (using algebraic notation)
      * Example:
-     *     Board.place(bishop, 'h', 1);
+     *     Board.place(bishop, "h1");
      * @param piece Piece (or any derived class, such as Bishop) instance
-     * @param positionY a char from a to h containing the column you want to place the piece
-     * @param positionX an int from 1 to 8 containing the row you want to place the piece
+     * @param position std::string (using algebraic notation) representing where you want to place the piece
      * @return void
      */
-    void place(Piece piece, char positionY, int positionX);
+    void place(Piece piece, std::string position);
 
     /**
      * Method used to find out which piece is at a given position (using algebraic notation)
      * Example: 
-     *     Board.get('a', 1);
-     * @param positionY a char from a to h containing the column you want to analyze
-     * @param positionX an int from 1 to 8 containing the row you want to analyze
+     *     Board.get("a1").getName();
+     * @param position std::string (using algebraic notation) representing the position to analyze
      * @return Piece (or any derived class) instance that is in the given position
      */
-    Piece get(char positionY, int positionX);
+    Piece get(std::string position);
 
     /**
      * Method used to set a custom FEN position

@@ -35,12 +35,12 @@ void Board::showBoard() {
     std::cout << ss.str() << std::flush;
 }
 
-void Board::place(Piece piece, char positionY, int positionX) {
-    this->pieces.at(8 - positionX).at((int)positionY - 97) = piece;
+void Board::place(Piece piece, std::string position) {
+    this->pieces.at(8 - (position[1] - '0')).at((int)position[0] - 97) = piece;
 }
 
-Piece Board::get(char positionY, int positionX) {
-    return this->pieces.at(8 - positionX).at((int)positionY - 97);
+Piece Board::get(std::string position) {
+    return this->pieces.at(8 - (position[1] - '0')).at((int)position[0] - 97);
 }
 
 void Board::setFenPosition(std::string fen) {
