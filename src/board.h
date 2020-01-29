@@ -46,6 +46,13 @@ public:
     void showBoard();
 
     /**
+     * Method completely clears the board by placing
+     * a NullPiece in every single position
+     * @return void
+     */
+    void clearBoard();
+
+    /**
      * Method used to place a piece at the board instance (using algebraic notation)
      * Example:
      *     Board.place(bishop, "h1");

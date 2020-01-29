@@ -35,6 +35,10 @@ void Board::showBoard() {
     std::cout << ss.str() << std::flush;
 }
 
+void Board::clearBoard() {
+    this->setFenPosition("8/8/8/8/8/8/8/8");
+}
+
 void Board::place(Piece piece, std::string position) {
     this->pieces.at(8 - (position[1] - '0')).at((int)position[0] - 97) = piece;
 }
