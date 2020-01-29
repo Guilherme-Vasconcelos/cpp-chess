@@ -20,6 +20,8 @@ Board::Board() {
         NullPiece piece;
         this->pieces.push_back(std::vector<Piece>(8, piece));
     }
+    this->currentFen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
+    this->setFenPosition(currentFen);
 }
 
 void Board::showBoard() {
@@ -79,6 +81,6 @@ void Board::setFenPosition(std::string fen) {
     this->pieces = pieces;
 }
 
-void Board::move(Piece, char initialY, int initialX, char finalY, int finalX) {
-    
+std::string Board::getCurrentFen() {
+    return this->currentFen;
 }
