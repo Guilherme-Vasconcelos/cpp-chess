@@ -88,3 +88,15 @@ void Board::setFenPosition(std::string fen) {
 std::string Board::getCurrentFen() {
     return this->currentFen;
 }
+
+void Board::move(std::string initialLocation, std::string finalLocation) {
+    // @TODO: currently, this method moves whatever is in initialLocation and moves it
+    // to finalLocation without checking if it's a legal move. In the future, implement
+    // in each Piece derived class a matrix of current legal moves, and this
+    // method move, before actually moving the piece, will first check if the desired move
+    // is in piece.legalMoves.
+    Piece pieceToMove = this->get(initialLocation);
+    NullPiece nPiece = NullPiece();
+    this->place(nPiece, initialLocation);
+    this->place(pieceToMove, finalLocation);
+}

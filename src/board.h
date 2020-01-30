@@ -87,6 +87,16 @@ public:
      * @return std::string with current position's FEN
      */
     std::string getCurrentFen();
+
+    /**
+     * Method use to move a piece from one location to another
+     * on the board
+     * Example:
+     *     Board.move("a1", "a5");
+     * will move whatever is in "a1" to "a5"
+     * @return void
+     */
+    void move(std::string initialLocation, std::string finalLocation);
 };
 
 #endif
