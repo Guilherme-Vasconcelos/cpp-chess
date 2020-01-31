@@ -20,6 +20,8 @@ Board::Board() {
         NullPiece piece;
         this->pieces.push_back(std::vector<Piece>(8, piece));
     }
+    this->currentFen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
+    this->setFenPosition(currentFen);
 }
 
 void Board::showBoard() {
@@ -33,12 +35,16 @@ void Board::showBoard() {
     std::cout << ss.str() << std::flush;
 }
 
-void Board::place(Piece piece, char positionY, int positionX) {
-    this->pieces.at(8 - positionX).at((int)positionY - 97) = piece;
+void Board::clearBoard() {
+    this->setFenPosition("8/8/8/8/8/8/8/8");
 }
 
-Piece Board::get(char positionY, int positionX) {
-    return this->pieces.at(8 - positionX).at((int)positionY - 97);
+void Board::place(Piece piece, std::string position) {
+    this->pieces.at(8 - (position[1] - '0')).at((int)position[0] - 97) = piece;
+}
+
+Piece Board::get(std::string position) {
+    return this->pieces.at(8 - (position[1] - '0')).at((int)position[0] - 97);
 }
 
 void Board::setFenPosition(std::string fen) {
@@ -77,4 +83,23 @@ void Board::setFenPosition(std::string fen) {
         }
     }
     this->pieces = pieces;
+}
+
+std::string Board::getCurrentFen() {
+    return this->currentFen;
+}
+
+void Board::move(std::string initialLocation, std::string finalLocation) {
+    // @TODO: currently, this method moves whatever is in initialLocation and moves it
+    // to finalLocation without checking if it's a legal move. In the future, implement
+    // in each Piece derived class a matrix of current legal moves, and this
+    // method move, before actually moving the piece, will first check if the desired move
+    // is in piece.legalMoves.
+    Piece pieceToMove = this->get(initialLocation);
+    if(pieceToMove.isNullPiece()) {
+        throw std::invalid_argument("Initial location informed contains instance of NullPiece (i.e. contains no piece)");
+    } // else if(finalLocation does not belong to pieceToMove.legalMoves [...]) { [...] }
+    NullPiece nPiece = NullPiece();
+    this->place(nPiece, initialLocation);
+    this->place(pieceToMove, finalLocation);
 }
