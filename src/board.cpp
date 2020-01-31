@@ -15,12 +15,12 @@
 #include "board.h"
 #include "pieces.h"
 
-Board::Board() {
+Board::Board(std::string currentFen) {
     for(int i=0; i<8; ++i) {
         NullPiece piece;
         this->pieces.push_back(std::vector<Piece>(8, piece));
     }
-    this->currentFen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
+    this->currentFen = currentFen;
     this->setFenPosition(currentFen);
 }
 
@@ -86,6 +86,8 @@ void Board::setFenPosition(std::string fen) {
 }
 
 std::string Board::getCurrentFen() {
+    // @TODO: iterate through the whole board and update
+    // the attribute this->currentFen accordingly.
     return this->currentFen;
 }
 
@@ -97,9 +99,10 @@ void Board::move(std::string initialLocation, std::string finalLocation) {
     // is in piece.legalMoves.
     Piece pieceToMove = this->get(initialLocation);
     if(pieceToMove.isNullPiece()) {
-        throw std::invalid_argument("Initial location informed contains instance of NullPiece (i.e. contains no piece)");
+        throw std::invalid_argument("Invalid argument: \"" + initialLocation + "\" position contains instance of NullPiece (i.e. contains no piece)");
     } // else if(finalLocation does not belong to pieceToMove.legalMoves [...]) { [...] }
     NullPiece nPiece = NullPiece();
     this->place(nPiece, initialLocation);
     this->place(pieceToMove, finalLocation);
+    // this->updateCurrentFen(this->getCurrentFen());
 }

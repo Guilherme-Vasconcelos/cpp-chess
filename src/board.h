@@ -29,7 +29,7 @@ private:
      */
     std::string currentFen;
 public:
-    Board();
+    Board(std::string currentFen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
 
     /**
      * 8x8 matrix of Pieces to represent the chess board
