@@ -9,7 +9,6 @@
  */
 
 #include <iostream>
-#include <vector>
 #include "pieces.h"
 #include "board.h"
 
