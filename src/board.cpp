@@ -12,6 +12,7 @@
 #include <sstream>
 #include <vector>
 #include <map>
+
 #include "board.h"
 #include "pieces.h"
 
@@ -63,7 +64,8 @@ void Board::setFenPosition(std::string fen) {
     piecesMap["q"] = Queen(Color::black);
     piecesMap["K"] = King(Color::white);
     piecesMap["k"] = King(Color::black);
-    for(int i=0; i<fen.size(); ++i) {
+
+    for(size_t i = 0; i < fen.size(); ++i) {
         if(fen[i] == '/') {
             pieces.push_back(row);
             row.clear();
