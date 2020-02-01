@@ -7,12 +7,9 @@
  * Distributed under the MIT License (license terms at https://opensource.org/licenses/MIT)
  * 
  */
-
-#define CATCH_CONFIG_MAIN
-#include "catch.hpp"
 #include "pieces.h"
 #include "board.h"
-
+#include "catch.hpp"
 Board boardInitialFen;
 
 TEST_CASE( "Testing initial position", "[initialPosition]" ) {

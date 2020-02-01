@@ -8,14 +8,6 @@
  * 
  */
 
-#include <iostream>
-
-#include "pieces.h"
-#include "board.h"
-
-int main() {
-    Board board;
-    board.showBoard();
-
-    return 0;
-}
+// https://github.com/catchorg/Catch2/blob/master/docs/slow-compiles.md
+#define CATCH_CONFIG_MAIN
+#include "catch.hpp"
