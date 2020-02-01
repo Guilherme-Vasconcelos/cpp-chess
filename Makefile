@@ -19,8 +19,11 @@ SRC := $(wildcard $(SRC_DIR)/*.cpp)
 TESTS := $(wildcard $(TESTS_DIR)/*.cpp)
 EXAMPLES := $(wildcard $(EXAMPLES_DIR)/*.cpp)
 
-# All '.o' files in 'obj' directory
+# All '.o' files in 'obj' directory from 'src' directory
 OBJ := $(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
+
+# All '.o' files in 'obj' directory from 'tests' directory
+TESTS_OBJ := $(TESTS:$(TESTS_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
 all: $(EXAMPLE_EXE)
 
@@ -44,9 +47,16 @@ example: $(EXAMPLE_EXE)
 clean:
 	$(RM) -r $(OBJ_DIR) *.out
 
-# Compile an run tests
-test: $(OBJ)
-	$(CXX) $(CPPFLAGS) $(INCLUDE) $(SRC) $(TESTS) -o $(TESTS_EXE)
+# Compile tests executable
+$(TESTS_EXE): $(TESTS_OBJ) | $(OBJ)
+	$(CXX) $(CPPFLAGS) $(INCLUDE) $(OBJ) $^ -o $@
+
+# Compile library '.o' files together with tests '.o' files
+$(OBJ_DIR)/%.o: $(TESTS_DIR)/%.cpp | $(OBJ_DIR)
+	$(CXX) $(INCLUDE) $(CFLAGS) -c $< -o $@
+
+# Compile (if necessary) and run tests
+test: $(TESTS_EXE)
 	./$(TESTS_EXE)
 
 .PHONY: all clean
