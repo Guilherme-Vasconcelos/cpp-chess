@@ -31,7 +31,6 @@
 *.exe
 *.out
 *.app
-bin/
 
 # Others
 .vscode

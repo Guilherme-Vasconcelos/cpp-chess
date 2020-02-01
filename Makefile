@@ -1,40 +1,52 @@
-EXE := cpp_chess
-TESTS_EXE := cpp_chess_tests
-EXAMPLE_EXE := cpp_chess_example
+# Compiled binaries
+EXE := cpp_chess.out
+TESTS_EXE := cpp_chess_tests.out
+EXAMPLE_EXE := cpp_chess_example.out
 
 SRC_DIR := src
-OBJ_DIR := bin
+OBJ_DIR := obj
 EXAMPLES_DIR := examples
 TESTS_DIR := tests
 
-CXXFLAGS=-g
+# g++ compilation flags
+CFLAGS := -std=c++11 -Wall -pedantic
 
-CPPFLAGS := -std=c++11 -Wall -pedantic -I$(SRC_DIR)/include
-TEST_CPPFLAGS := -std=c++11 -Wall -pedantic -I$(TESTS_DIR)/include -I$(SRC_DIR)/include
+# Header files to include for compiling library
+INCLUDE := -Iinclude
 
+# Link source files in their respective directories
 SRC := $(wildcard $(SRC_DIR)/*.cpp)
 TESTS := $(wildcard $(TESTS_DIR)/*.cpp)
 EXAMPLES := $(wildcard $(EXAMPLES_DIR)/*.cpp)
-OBJ := $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
-all: $(EXE)
+# All '.o' files in 'obj' directory
+OBJ := $(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
-$(EXE): $(OBJ)
-	$(CXX) $(CPPFLAGS) $^ -o $(OBJ_DIR)/$@
+all: $(EXAMPLE_EXE)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	$(CXX) $(CPPFLAGS) $(CFLAGS) -c $< -o $(OBJ_DIR)/$@
+# Compile example in 'examples' directory
+$(EXAMPLE_EXE): $(OBJ)
+	$(CXX) $(INCLUDE) $(EXAMPLES) $^ -o $@
 
+# Compile '.o' files
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
+	$(CXX) $(INCLUDE) $(CFLAGS) -c $< -o $@
+
+# Create directory for '.o' files
 $(OBJ_DIR):
 	mkdir $@
 
+# Compile if needed, then run example file
+example: $(EXAMPLE_EXE)
+	./$(EXAMPLE_EXE)
+
+# Clean build objects and compiled files
 clean:
-	$(RM) -r $(OBJ_DIR)
+	$(RM) -r $(OBJ_DIR) *.out
 
-test:
-	$(CXX) $(TEST_CPPFLAGS) $(SRC) $(TESTS) -o $(OBJ_DIR)/$(TESTS_EXE)
-
-example:
-	$(CXX) $(CPPFLAGS) $(SRC) $(EXAMPLES) -o $(OBJ_DIR)/$(EXAMPLE_EXE)
+# Compile an run tests
+test: $(OBJ)
+	$(CXX) $(CPPFLAGS) $(INCLUDE) $(SRC) $(TESTS) -o $(TESTS_EXE)
+	./$(TESTS_EXE)
 
 .PHONY: all clean
