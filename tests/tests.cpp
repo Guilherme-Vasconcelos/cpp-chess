@@ -26,6 +26,21 @@ TEST_CASE( "Testing initial position", "[initialPosition]" ) {
     REQUIRE( boardInitialFen.get("g1").getColor() == Color::white );
     REQUIRE( boardInitialFen.get("g8").getName() == "n" );
     REQUIRE( boardInitialFen.get("g8").getColor() == Color::black );
+    REQUIRE( boardInitialFen.get("f1").getName() == "B");
+    REQUIRE( boardInitialFen.get("f8").getName() == "b");
+    REQUIRE( boardInitialFen.get("f1").getColor() == Color::white);
+    REQUIRE( boardInitialFen.get("f8").getColor() == Color::black);
     REQUIRE( boardInitialFen.get("a3").getName() == "." );
     REQUIRE( boardInitialFen.get("f4").getName() == "." );
+    REQUIRE( boardInitialFen.get("g5").getName() == "." );
+    REQUIRE( boardInitialFen.get("h6").getName() == "." );
+}
+
+Board boardMovePieces;
+TEST_CASE( "Testing pieces movements", "[movements]" ) {
+    REQUIRE( boardMovePieces.getCurrentFen() == "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR" );
+    boardMovePieces.move("a2", "a4");
+    REQUIRE( boardMovePieces.get("a2").getName() == "." );
+    REQUIRE( boardMovePieces.get("a4").getName() == "P" );
+    REQUIRE( boardMovePieces.get("a4").getColor() == Color::white );
 }

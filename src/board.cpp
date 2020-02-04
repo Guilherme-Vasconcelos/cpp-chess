@@ -96,13 +96,14 @@ std::string Board::getCurrentFen() {
 void Board::move(std::string initialLocation, std::string finalLocation) {
     // @TODO: currently, this method moves whatever is in initialLocation and moves it
     // to finalLocation without checking if it's a legal move. In the future, implement
-    // in each Piece derived class a matrix of current legal moves, and this
+    // in each Piece derived class a vector of current legal squares to move, and this
     // method move, before actually moving the piece, will first check if the desired move
-    // is in piece.legalMoves.
+    // is in piece.legalSquares.
     Piece pieceToMove = this->get(initialLocation);
+    //pieceToMove.updateLegalSquares();
     if(pieceToMove.isNullPiece()) {
         throw std::invalid_argument("Invalid argument: \"" + initialLocation + "\" position contains instance of NullPiece (i.e. contains no piece)");
-    } // else if(finalLocation does not belong to pieceToMove.legalMoves [...]) { [...] }
+    } // else if(finalLocation does not belong to pieceToMove.legalSquares [...]) { [...] }
     NullPiece nPiece = NullPiece();
     this->place(nPiece, initialLocation);
     this->place(pieceToMove, finalLocation);

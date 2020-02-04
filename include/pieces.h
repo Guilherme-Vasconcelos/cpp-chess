@@ -12,6 +12,7 @@
 #define PIECES_H
 
 #include <iostream>
+#include <vector>
 
 /**
  * class Color is used to define each piece's color (see class Piece below)
@@ -23,6 +24,13 @@ enum class Color {white, black};
  */
 class Piece {
 protected:
+    /**
+     * the vector below will store the legal squares that a piece can go
+     * for example, a pawn on a2 can either go to a3 or a4
+     * so legalSquares for that pawn would be {"a3", "a4"}
+     */
+    std::vector<std::string> legalSquares;
+
     /**
      * name stores a letter that represents the piece
      * uppercase letters represent white pieces
