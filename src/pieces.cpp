@@ -19,6 +19,13 @@ std::string Piece::getName() {
     return this->name;
 }
 
+std::vector<int> Piece::convertAlgebraicToInts(std::string algebraicPosition) {
+    std::vector<int> vectorRowColumn;
+    vectorRowColumn.push_back(8 - (algebraicPosition[1] - '0'));
+    vectorRowColumn.push_back((int)algebraicPosition[0] - 97);
+    return vectorRowColumn;
+}
+
 Rook::Rook(Color color) {
     this->nullPiece = false;
     this->color = color;
@@ -30,6 +37,13 @@ Rook::Rook(Color color) {
             this->name = "r";
             break;
     }
+}
+
+void Rook::updateLegalSquares(std::string piecePosition) {
+    std::vector<int> positionsRowColumn;
+    positionsRowColumn = this->convertAlgebraicToInts(piecePosition);
+    // CODE THE LOGIC TO UPDATE THE LEGAL SQUARES BELOW
+    // if movement is legal then: this->legalSquares.push_back(movement)
 }
 
 Bishop::Bishop(Color color) {
@@ -45,6 +59,13 @@ Bishop::Bishop(Color color) {
     }
 }
 
+void Bishop::updateLegalSquares(std::string piecePosition) {
+    std::vector<int> positionsRowColumn;
+    positionsRowColumn = this->convertAlgebraicToInts(piecePosition);
+    // CODE THE LOGIC TO UPDATE THE LEGAL SQUARES BELOW
+    // if movement is legal then: this->legalSquares.push_back(movement)
+}
+
 Knight::Knight(Color color) {
     this->nullPiece = false;
     this->color = color;
@@ -56,6 +77,13 @@ Knight::Knight(Color color) {
             this->name = "n";
             break;
     }
+}
+
+void Knight::updateLegalSquares(std::string piecePosition) {
+    std::vector<int> positionsRowColumn;
+    positionsRowColumn = this->convertAlgebraicToInts(piecePosition);
+    // CODE THE LOGIC TO UPDATE THE LEGAL SQUARES BELOW
+    // if movement is legal then: this->legalSquares.push_back(movement)
 }
 
 King::King(Color color) {
@@ -71,6 +99,13 @@ King::King(Color color) {
     }
 }
 
+void King::updateLegalSquares(std::string piecePosition) {
+    std::vector<int> positionsRowColumn;
+    positionsRowColumn = this->convertAlgebraicToInts(piecePosition);
+    // CODE THE LOGIC TO UPDATE THE LEGAL SQUARES BELOW
+    // if movement is legal then: this->legalSquares.push_back(movement)
+}
+
 Queen::Queen(Color color) {
     this->nullPiece = false;
     this->color = color;
@@ -84,6 +119,13 @@ Queen::Queen(Color color) {
     }
 }
 
+void Queen::updateLegalSquares(std::string piecePosition) {
+    std::vector<int> positionsRowColumn;
+    positionsRowColumn = this->convertAlgebraicToInts(piecePosition);
+    // CODE THE LOGIC TO UPDATE THE LEGAL SQUARES BELOW
+    // if movement is legal then: this->legalSquares.push_back(movement)
+}
+
 Pawn::Pawn(Color color) {
     this->nullPiece = false;
     this->color = color;
@@ -95,6 +137,13 @@ Pawn::Pawn(Color color) {
             this->name = "p";
             break;
     }
+}
+
+void Pawn::updateLegalSquares(std::string piecePosition) {
+    std::vector<int> positionsRowColumn;
+    positionsRowColumn = this->convertAlgebraicToInts(piecePosition);
+    // CODE THE LOGIC TO UPDATE THE LEGAL SQUARES BELOW
+    // if movement is legal then: this->legalSquares.push_back(movement)
 }
 
 NullPiece::NullPiece() {

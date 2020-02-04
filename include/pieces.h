@@ -84,6 +84,24 @@ public:
      */
     bool isNullPiece();
 
+    /**
+     * This method will be used internally to update the legal
+     * squares where the piece can move.
+     * @param piecePosition a string with the piece position (e.g "a3", "g5")
+     * @return void
+     */
+    void updateLegalSquares(std::string piecePosition);
+
+    /**
+     * Used to convert algebraic notation to a vector containing x, y coordinates
+     * e.g convertAlgebraicToInt("a8") returns the std::vector {0, 0}
+     * Notice that the board matrix left-top position is 0, 0, then each row
+     * increases the x-coordinate by 1 and each column increases the y-coordinate by 1
+     * @param algebraicPosition a string with the position to convert
+     * @return std::vector<int> with two elements: row and column
+     */
+    std::vector<int> convertAlgebraicToInts(std::string algebraicPosition);
+
     virtual ~Piece() {};
 };
 
@@ -94,6 +112,8 @@ public:
 class Rook: public Piece {
 public:
     Rook(Color color);
+    void updateLegalSquares(std::string piecePosition);
+    std::vector<std::string> legalSquares;
 };
 
 /**
@@ -103,6 +123,8 @@ public:
 class Bishop: public Piece {
 public:
     Bishop(Color color);
+    void updateLegalSquares(std::string piecePosition);
+    std::vector<std::string> legalSquares;
 };
 
 /**
@@ -112,6 +134,8 @@ public:
 class Knight: public Piece {
 public:
     Knight(Color color);
+    void updateLegalSquares(std::string piecePosition);
+    std::vector<std::string> legalSquares;
 };
 
 /**
@@ -121,6 +145,8 @@ public:
 class King: public Piece {
 public:
     King(Color color);
+    void updateLegalSquares(std::string piecePosition);
+    std::vector<std::string> legalSquares;
 };
 
 /**
@@ -130,6 +156,8 @@ public:
 class Queen: public Piece {
 public:
     Queen(Color color);
+    void updateLegalSquares(std::string piecePosition);
+    std::vector<std::string> legalSquares;
 };
 
 /**
@@ -139,6 +167,8 @@ public:
 class Pawn: public Piece {
 public:
     Pawn(Color color);
+    void updateLegalSquares(std::string piecePosition);
+    std::vector<std::string> legalSquares;
 };
 
 /**
