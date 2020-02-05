@@ -40,10 +40,16 @@ Rook::Rook(Color color) {
 }
 
 void Rook::updateLegalSquares(std::string piecePosition) {
-    std::vector<int> positionsRowColumn;
-    positionsRowColumn = this->convertAlgebraicToInts(piecePosition);
-    // CODE THE LOGIC TO UPDATE THE LEGAL SQUARES BELOW
-    // if movement is legal then: this->legalSquares.push_back(movement)
+    this->legalSquares.clear();
+    std::vector<int> positionRowColumn;
+    positionRowColumn = this->convertAlgebraicToInts(piecePosition);
+    // Code guide:
+    // Logic: if square is legal then: this->legalSquares.push_back(square)
+    // A rook can either move on y-axis or on x-axis, but not on both
+    // at the same time. Also, it can't jump over pieces and if there is
+    // a piece from the opposite color at an available square, 
+    // then the rook can capture it. In the future, remember to code
+    // castle rules.
 }
 
 Bishop::Bishop(Color color) {
@@ -60,10 +66,13 @@ Bishop::Bishop(Color color) {
 }
 
 void Bishop::updateLegalSquares(std::string piecePosition) {
-    std::vector<int> positionsRowColumn;
-    positionsRowColumn = this->convertAlgebraicToInts(piecePosition);
-    // CODE THE LOGIC TO UPDATE THE LEGAL SQUARES BELOW
-    // if movement is legal then: this->legalSquares.push_back(movement)
+    this->legalSquares.clear();
+    std::vector<int> positionRowColumn;
+    positionRowColumn = this->convertAlgebraicToInts(piecePosition);
+    // Code guide:
+    // if square is legal then: this->legalSquares.push_back(square)
+    // A bishop can move on diagonals. It can't jump over pieces and if there
+    // is a piece from the opposite color then the bishop can capture it.
 }
 
 Knight::Knight(Color color) {
@@ -80,10 +89,15 @@ Knight::Knight(Color color) {
 }
 
 void Knight::updateLegalSquares(std::string piecePosition) {
-    std::vector<int> positionsRowColumn;
-    positionsRowColumn = this->convertAlgebraicToInts(piecePosition);
-    // CODE THE LOGIC TO UPDATE THE LEGAL SQUARES BELOW
-    // if movement is legal then: this->legalSquares.push_back(movement)
+    this->legalSquares.clear();
+    std::vector<int> positionRowColumn;
+    positionRowColumn = this->convertAlgebraicToInts(piecePosition);
+    // Code guide:
+    // if square is legal then: this->legalSquares.push_back(square)
+    // A knight can move two squares on one axis then one square
+    // on the another axis. It can jump over pieces and if there is
+    // a piece from the opposite color at the target square
+    // then the knight can capture it.
 }
 
 King::King(Color color) {
@@ -100,10 +114,16 @@ King::King(Color color) {
 }
 
 void King::updateLegalSquares(std::string piecePosition) {
-    std::vector<int> positionsRowColumn;
-    positionsRowColumn = this->convertAlgebraicToInts(piecePosition);
-    // CODE THE LOGIC TO UPDATE THE LEGAL SQUARES BELOW
-    // if movement is legal then: this->legalSquares.push_back(movement)
+    this->legalSquares.clear();
+    std::vector<int> positionRowColumn;
+    positionRowColumn = this->convertAlgebraicToInts(piecePosition);
+    // Code guide:
+    // if square is legal then: this->legalSquares.push_back(square)
+    // a king can move in any direction (either y-axis, x-axis or diagonals),
+    // but only one square at the time. It can't jump over pieces and if
+    // there is a piece from the opposite color then the king can
+    // capture it as long as the target piece is not defended.
+    // In the future, remember to code castle rules.
 }
 
 Queen::Queen(Color color) {
@@ -120,10 +140,14 @@ Queen::Queen(Color color) {
 }
 
 void Queen::updateLegalSquares(std::string piecePosition) {
-    std::vector<int> positionsRowColumn;
-    positionsRowColumn = this->convertAlgebraicToInts(piecePosition);
-    // CODE THE LOGIC TO UPDATE THE LEGAL SQUARES BELOW
-    // if movement is legal then: this->legalSquares.push_back(movement)
+    this->legalSquares.clear();
+    std::vector<int> positionRowColumn;
+    positionRowColumn = this->convertAlgebraicToInts(piecePosition);
+    // Code guide:
+    // if square is legal then: this->legalSquares.push_back(square)
+    // A queen can move in any direction (either y-axis, x-axis or diagonals)
+    // and as many squares as possible (without jumping over pieces).
+    // If there is a piece from the opposite color then the queen can capture it.
 }
 
 Pawn::Pawn(Color color) {
@@ -140,10 +164,16 @@ Pawn::Pawn(Color color) {
 }
 
 void Pawn::updateLegalSquares(std::string piecePosition) {
-    std::vector<int> positionsRowColumn;
-    positionsRowColumn = this->convertAlgebraicToInts(piecePosition);
-    // CODE THE LOGIC TO UPDATE THE LEGAL SQUARES BELOW
-    // if movement is legal then: this->legalSquares.push_back(movement)
+    this->legalSquares.clear();
+    std::vector<int> positionRowColumn;
+    positionRowColumn = this->convertAlgebraicToInts(piecePosition);
+    // Code guide:
+    // if square is legal then: this->legalSquares.push_back(square)
+    // A pawn can move two squares forward if it's its first movement.
+    // Otherwise, it can only move one square forward as long as the target 
+    // square is available. It can only move to an adjacent diagonal if there
+    // is a piece from the opposite color there, since this is the only way
+    // it can capture pieces. In the future, remember to code en passant and promotions.
 }
 
 NullPiece::NullPiece() {
