@@ -90,7 +90,7 @@ public:
      * @param piecePosition a string with the piece position (e.g "a3", "g5")
      * @return void
      */
-    void updateLegalSquares(std::string piecePosition);
+    void updateLegalSquares(std::string piecePosition); // This may need to be a virtual function in the future
 
     /**
      * Used to convert algebraic notation to a vector containing x, y coordinates

@@ -90,6 +90,13 @@ void Board::setFenPosition(std::string fen) {
 std::string Board::getCurrentFen() {
     // @TODO: iterate through the whole board and update
     // the attribute this->currentFen accordingly.
+    std::string updatedFen;
+    for(int i=0; i<8; ++i) {
+        for(int j=0; j<8; ++j) {
+            
+        }
+    }
+    //this->currentFen = updatedFen;
     return this->currentFen;
 }
 

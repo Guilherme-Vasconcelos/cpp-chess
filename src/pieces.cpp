@@ -47,7 +47,7 @@ void Rook::updateLegalSquares(std::string piecePosition) {
     // Logic: if square is legal then: this->legalSquares.push_back(square)
     // A rook can either move on y-axis or on x-axis, but not on both
     // at the same time. Also, it can't jump over pieces and if there is
-    // a piece from the opposite color at an available square, 
+    // a piece from the opposite color at an available square 
     // then the rook can capture it. In the future, remember to code
     // castle rules.
 }
@@ -72,7 +72,8 @@ void Bishop::updateLegalSquares(std::string piecePosition) {
     // Code guide:
     // if square is legal then: this->legalSquares.push_back(square)
     // A bishop can move on diagonals. It can't jump over pieces and if there
-    // is a piece from the opposite color then the bishop can capture it.
+    // is a piece from the opposite color at target square then the
+    // bishop can capture it.
 }
 
 Knight::Knight(Color color) {
