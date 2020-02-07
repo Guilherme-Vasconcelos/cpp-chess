@@ -88,9 +88,10 @@ public:
      * This method will be used internally to update the legal
      * squares where the piece can move.
      * @param piecePosition a string with the piece position (e.g "a3", "g5")
+     * @param pieces a 8x8 matrix containing the current pieces. For this argument, we will pass board.pieces
      * @return void
      */
-    void updateLegalSquares(std::string piecePosition); // This may need to be a virtual function in the future
+    virtual void updateLegalSquares(std::string piecePosition, std::vector<std::vector<Piece>> pieces) {};
 
     /**
      * Used to convert algebraic notation to a vector containing x, y coordinates
@@ -102,6 +103,16 @@ public:
      */
     std::vector<int> convertAlgebraicToInts(std::string algebraicPosition);
 
+    /**
+     * Used to convert a vector of ints containing row, column of the piece
+     * to algebraic notation. e.g.:
+     * std::vector<int> myVector {0, 0};
+     * convertIntsToAlgebraic(myVector);  <<< this will return "a8"
+     * @param positionRowColumn a std::vector containing the row and column to be converted
+     * @return std::string with the converted algebraic notation
+     */
+    std::string convertIntsToAlgebraic(std::vector<int> positionRowColumn);
+
     virtual ~Piece() {};
 };
 
@@ -112,7 +123,7 @@ public:
 class Rook: public Piece {
 public:
     Rook(Color color);
-    void updateLegalSquares(std::string piecePosition);
+    void updateLegalSquares(std::string piecePosition, std::vector<std::vector<Piece>> pieces);
     std::vector<std::string> legalSquares;
 };
 
@@ -123,7 +134,7 @@ public:
 class Bishop: public Piece {
 public:
     Bishop(Color color);
-    void updateLegalSquares(std::string piecePosition);
+    void updateLegalSquares(std::string piecePosition, std::vector<std::vector<Piece>> pieces);
     std::vector<std::string> legalSquares;
 };
 
@@ -134,7 +145,7 @@ public:
 class Knight: public Piece {
 public:
     Knight(Color color);
-    void updateLegalSquares(std::string piecePosition);
+    void updateLegalSquares(std::string piecePosition, std::vector<std::vector<Piece>> pieces);
     std::vector<std::string> legalSquares;
 };
 
@@ -145,7 +156,7 @@ public:
 class King: public Piece {
 public:
     King(Color color);
-    void updateLegalSquares(std::string piecePosition);
+    void updateLegalSquares(std::string piecePosition, std::vector<std::vector<Piece>> pieces);
     std::vector<std::string> legalSquares;
 };
 
@@ -156,7 +167,7 @@ public:
 class Queen: public Piece {
 public:
     Queen(Color color);
-    void updateLegalSquares(std::string piecePosition);
+    void updateLegalSquares(std::string piecePosition, std::vector<std::vector<Piece>> pieces);
     std::vector<std::string> legalSquares;
 };
 
@@ -167,7 +178,7 @@ public:
 class Pawn: public Piece {
 public:
     Pawn(Color color);
-    void updateLegalSquares(std::string piecePosition);
+    void updateLegalSquares(std::string piecePosition, std::vector<std::vector<Piece>> pieces);
     std::vector<std::string> legalSquares;
 };
 

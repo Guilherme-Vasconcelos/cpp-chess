@@ -26,6 +26,10 @@ std::vector<int> Piece::convertAlgebraicToInts(std::string algebraicPosition) {
     return vectorRowColumn;
 }
 
+std::string Piece::convertIntsToAlgebraic(std::vector<int> positionRowColumn) {
+    std::string stringToReturn = "";
+}
+
 Rook::Rook(Color color) {
     this->nullPiece = false;
     this->color = color;
@@ -39,7 +43,7 @@ Rook::Rook(Color color) {
     }
 }
 
-void Rook::updateLegalSquares(std::string piecePosition) {
+void Rook::updateLegalSquares(std::string piecePosition, std::vector<std::vector<Piece>> pieces) {
     this->legalSquares.clear();
     std::vector<int> positionRowColumn;
     positionRowColumn = this->convertAlgebraicToInts(piecePosition);
@@ -50,6 +54,18 @@ void Rook::updateLegalSquares(std::string piecePosition) {
     // a piece from the opposite color at an available square 
     // then the rook can capture it. In the future, remember to code
     // castle rules.
+    
+    // remember, the rook's row is positionRowColumn[0]
+    // and the rook's column is positionRowColumn[1]
+
+    // checking for other pieces to the left of the rook
+    // i.e. same row, but reducing the column to be checked
+    for(int iterateToLeft=positionRowColumn[1]; iterateToLeft>-1; --iterateToLeft) {
+        if(pieces[positionRowColumn[0]][iterateToLeft].getName() == ".") {
+            //legalSquares.push_back(); // push_back the algebraic notation of pieces[positionRowColumn[0]][iterateToLeft]
+        }
+    }
+    
 }
 
 Bishop::Bishop(Color color) {
@@ -65,7 +81,7 @@ Bishop::Bishop(Color color) {
     }
 }
 
-void Bishop::updateLegalSquares(std::string piecePosition) {
+void Bishop::updateLegalSquares(std::string piecePosition, std::vector<std::vector<Piece>> pieces) {
     this->legalSquares.clear();
     std::vector<int> positionRowColumn;
     positionRowColumn = this->convertAlgebraicToInts(piecePosition);
@@ -89,7 +105,7 @@ Knight::Knight(Color color) {
     }
 }
 
-void Knight::updateLegalSquares(std::string piecePosition) {
+void Knight::updateLegalSquares(std::string piecePosition, std::vector<std::vector<Piece>> pieces) {
     this->legalSquares.clear();
     std::vector<int> positionRowColumn;
     positionRowColumn = this->convertAlgebraicToInts(piecePosition);
@@ -114,7 +130,7 @@ King::King(Color color) {
     }
 }
 
-void King::updateLegalSquares(std::string piecePosition) {
+void King::updateLegalSquares(std::string piecePosition, std::vector<std::vector<Piece>> pieces) {
     this->legalSquares.clear();
     std::vector<int> positionRowColumn;
     positionRowColumn = this->convertAlgebraicToInts(piecePosition);
@@ -140,7 +156,7 @@ Queen::Queen(Color color) {
     }
 }
 
-void Queen::updateLegalSquares(std::string piecePosition) {
+void Queen::updateLegalSquares(std::string piecePosition, std::vector<std::vector<Piece>> pieces) {
     this->legalSquares.clear();
     std::vector<int> positionRowColumn;
     positionRowColumn = this->convertAlgebraicToInts(piecePosition);
@@ -164,7 +180,7 @@ Pawn::Pawn(Color color) {
     }
 }
 
-void Pawn::updateLegalSquares(std::string piecePosition) {
+void Pawn::updateLegalSquares(std::string piecePosition, std::vector<std::vector<Piece>> pieces) {
     this->legalSquares.clear();
     std::vector<int> positionRowColumn;
     positionRowColumn = this->convertAlgebraicToInts(piecePosition);
