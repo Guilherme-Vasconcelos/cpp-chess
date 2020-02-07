@@ -9,6 +9,7 @@
  */
 
 #include <iostream>
+#include <sstream>
 #include "pieces.h"
 
 Piece::Piece() {
@@ -27,7 +28,10 @@ std::vector<int> Piece::convertAlgebraicToInts(std::string algebraicPosition) {
 }
 
 std::string Piece::convertIntsToAlgebraic(std::vector<int> positionRowColumn) {
-    std::string stringToReturn = "";
+    std::stringstream ss;
+    ss << (char)('a' + positionRowColumn[1]);
+    ss << (char)(8 - (positionRowColumn[0] - '0'));
+    return ss.str();
 }
 
 Rook::Rook(Color color) {
@@ -62,7 +66,10 @@ void Rook::updateLegalSquares(std::string piecePosition, std::vector<std::vector
     // i.e. same row, but reducing the column to be checked
     for(int iterateToLeft=positionRowColumn[1]; iterateToLeft>-1; --iterateToLeft) {
         if(pieces[positionRowColumn[0]][iterateToLeft].getName() == ".") {
-            //legalSquares.push_back(); // push_back the algebraic notation of pieces[positionRowColumn[0]][iterateToLeft]
+            std::vector<int> vectorToPush;
+            vectorToPush.push_back(positionRowColumn[0]);
+            vectorToPush.push_back(iterateToLeft);
+            legalSquares.push_back(convertIntsToAlgebraic(vectorToPush));
         }
     }
     
