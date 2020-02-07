@@ -64,12 +64,13 @@ void Rook::updateLegalSquares(std::string piecePosition, std::vector<std::vector
 
     // checking for other pieces to the left of the rook
     // i.e. same row, but reducing the column to be checked
+    std::cout << "UPDATING ROOK" << std::endl;
     for(int iterateToLeft=positionRowColumn[1]; iterateToLeft>-1; --iterateToLeft) {
         if(pieces[positionRowColumn[0]][iterateToLeft].getName() == ".") {
             std::vector<int> vectorToPush;
             vectorToPush.push_back(positionRowColumn[0]);
             vectorToPush.push_back(iterateToLeft);
-            legalSquares.push_back(convertIntsToAlgebraic(vectorToPush));
+            this->legalSquares.push_back(convertIntsToAlgebraic(vectorToPush));
         }
     }
     

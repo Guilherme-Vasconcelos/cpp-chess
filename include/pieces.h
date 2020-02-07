@@ -25,13 +25,6 @@ enum class Color {white, black};
 class Piece {
 protected:
     /**
-     * the vector below will store the legal squares that a piece can go
-     * for example, a pawn on a2 can either go to a3 or a4
-     * so legalSquares for that pawn would be {"a3", "a4"}
-     */
-    std::vector<std::string> legalSquares;
-
-    /**
      * name stores a letter that represents the piece
      * uppercase letters represent white pieces
      * and lowercase letters represent black pieces, following FEN's convention
@@ -56,6 +49,13 @@ public:
     Piece();
     int positionX;
     int positionY;
+
+    /**
+     * the vector below will store the legal squares that a piece can go
+     * for example, a pawn on a2 can either go to a3 or a4
+     * so legalSquares for that pawn would be {"a3", "a4"}
+     */
+    std::vector<std::string> legalSquares;
 
     /**
      * Method getName is used to get the name of the piece

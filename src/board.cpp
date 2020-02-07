@@ -107,10 +107,21 @@ void Board::move(std::string initialLocation, std::string finalLocation) {
     // method move, before actually moving the piece, will first check if the desired move
     // is in piece.legalSquares.
     Piece pieceToMove = this->get(initialLocation);
-    //pieceToMove.updateLegalSquares(this->pieceToMove.position, this->board.pieces);
+    pieceToMove.updateLegalSquares(initialLocation, this->pieces); // not executing for some reason
+    bool isLegal;
+    for(size_t i=0; i<pieceToMove.legalSquares.size(); ++i) {
+        if(pieceToMove.legalSquares[i] != finalLocation) {
+            isLegal = false;
+        } else {
+            isLegal = true;
+            break;
+        }
+    }
     if(pieceToMove.isNullPiece()) {
         throw std::invalid_argument("Invalid argument: \"" + initialLocation + "\" position contains instance of NullPiece (i.e. contains no piece)");
-    } // else if(finalLocation does not belong to pieceToMove.legalSquares [...]) { [...] }
+    } //else if(!isLegal) {
+        //throw std::invalid_argument("Invalid argument: \"" + finalLocation + "\" does not belong to Piece.legalMoves (i.e. move not allowed)");
+    //}
     NullPiece nPiece = NullPiece();
     this->place(nPiece, initialLocation);
     this->place(pieceToMove, finalLocation);

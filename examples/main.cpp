@@ -15,17 +15,11 @@
 
 int main() {
 
-    Board board;
-    Rook rook(Color::white);
+    Board board("2bqnrk1/5p1p/5PpQ/3pP1P1/2pP1R2/2P3N1/6BP/1q4K1");
+    // rook in f4 can move to e4
     board.showBoard();
-
-    board.move("a1", "h3");
-
+    board.move("f4", "e4");
     board.showBoard();
-    rook.updateLegalSquares("h3", board.pieces);
-    for(int i=0; i<7; ++i) {
-        std::cout << rook.legalSquares[i] << std::endl;
-    }
 
     return 0;
 }
