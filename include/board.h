@@ -12,6 +12,7 @@
 #define BOARD_H
 
 #include <iostream>
+#include <memory>
 #include <vector>
 
 #include "pieces.h"
@@ -37,7 +38,7 @@ public:
      * setter: place (see below)
      * getter: get (see below)
      */
-    std::vector<std::vector<Piece>> pieces;
+    std::vector<std::vector<Piece*>> pieces;
 
     /**
      * Method used to show the current board. Example:
@@ -56,21 +57,22 @@ public:
     /**
      * Method used to place a piece at the board instance (using algebraic notation)
      * Example:
+     *     Bishop *bishop = new Bishop();
      *     Board.place(bishop, "h1");
-     * @param piece Piece (or any derived class, such as Bishop) instance
+     * @param *piece A pointer to a Piece (or any derived class) instance
      * @param position std::string (using algebraic notation) representing where you want to place the piece
      * @return void
      */
-    void place(Piece piece, std::string position);
+    void place(Piece *piece, std::string position);
 
     /**
      * Method used to find out which piece is at a given position (using algebraic notation)
      * Example: 
      *     Board.get("a1").getName();
      * @param position std::string (using algebraic notation) representing the position to analyze
-     * @return Piece (or any derived class) instance that is in the given position
+     * @return pointer to Piece (or any derived class) instance that is in the given position
      */
-    Piece get(std::string position);
+    Piece* get(std::string position);
 
     /**
      * Method used to set a custom FEN position
