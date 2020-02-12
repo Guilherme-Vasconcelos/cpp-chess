@@ -51,7 +51,7 @@ void Board::showBoard() {
 }
 
 void Board::place(Piece *piece, std::string position) {
-    delete(this->pieces.at(8 - (position[1] - '0')).at((int)position[0] - 97));
+    //delete(this->pieces.at(8 - (position[1] - '0')).at((int)position[0] - 97));
     this->pieces.at(8 - (position[1] - '0')).at((int)position[0] - 97) = piece;
 }
 
@@ -135,30 +135,23 @@ std::string Board::getCurrentFen() {
 }
 
 void Board::move(std::string initialLocation, std::string finalLocation) {
-    // @TODO: currently, this method moves whatever is in initialLocation and moves it
-    // to finalLocation without checking if it's a legal move. In the future, implement
-    // in each Piece derived class a vector of current legal squares to move, and this
-    // method move, before actually moving the piece, will first check if the desired move
-    // is in piece.legalSquares.
-    Piece *pieceToMove = this->get(initialLocation);
+    Piece *pieceToMove = this->get(initialLocation); // somehow use a new here
     pieceToMove->updateLegalSquares(initialLocation, this->pieces);
+    std::vector<std::string> legalSquares = pieceToMove->getLegalSquares();
     bool isLegal = false;
-    for(size_t i=0; i<pieceToMove->legalSquares.size(); ++i) {
-        if(pieceToMove->legalSquares[i] == finalLocation) {
-            isLegal = true;
-            break;
-        }
-    }
+    //for(size_t i=0; i<pieceToMove->legalSquares.size(); ++i) {
+        //std::cout << pieceToMove->legalSquares[i] << std::endl;
+        //if(pieceToMove->legalSquares[i] == finalLocation) {
+        //    isLegal = true;
+        //    break;
+        //}
+    //}
     if(pieceToMove->isNullPiece()) {
         throw std::invalid_argument("Invalid argument: \"" + initialLocation + "\" position contains instance of NullPiece (i.e. contains no piece)");
-    } else if(!isLegal) {
-        throw std::invalid_argument("Invalid argument: Target square \"" + finalLocation + "\" does not belong to Piece.legalMoves (i.e. move not allowed)");
-    }
+    } //else if(!isLegal) {
+        //throw std::invalid_argument("Invalid argument: Target square \"" + finalLocation + "\" does not belong to Piece.legalMoves (i.e. move not allowed)");
+    //}
     NullPiece *nPiece = new NullPiece();
-    //std::vector<int> positionRowColumn;
-    //positionRowColumn.push_back(8 - (initialLocation[1] - '0'));
-    //positionRowColumn.push_back((int)initialLocation[0] - 97);
-    //delete(this->pieces.at(positionRowColumn[0]).at(positionRowColumn[1]));
     this->place(pieceToMove, finalLocation);
     this->place(nPiece, initialLocation);
     // this->updateCurrentFen(this->getCurrentFen());

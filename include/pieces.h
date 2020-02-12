@@ -57,6 +57,8 @@ public:
      */
     std::vector<std::string> legalSquares;
 
+    std::vector<std::string> getLegalSquares();
+
     /**
      * Method getName is used to get the name of the piece
      * Example:
@@ -190,6 +192,8 @@ public:
 class NullPiece: public Piece {
 public:
     NullPiece();
+    void updateLegalSquares() {std::vector<std::string> legalSquares {}; this->legalSquares=legalSquares;};
+    std::vector<std::string> legalSquares {};
 };
 
 #endif

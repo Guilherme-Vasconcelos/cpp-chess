@@ -29,7 +29,7 @@ std::vector<int> Piece::convertAlgebraicToInts(std::string algebraicPosition) {
 
 std::string Piece::convertIntsToAlgebraic(std::vector<int> positionRowColumn) {
     std::stringstream ss;
-    ss << (char)('a' + positionRowColumn[1]);
+    ss << (char)((int)positionRowColumn[1] + 97);
     ss << (char)(8 - (positionRowColumn[0] - '0'));
     return ss.str();
 }
@@ -70,12 +70,17 @@ void Rook::updateLegalSquares(std::string piecePosition, std::vector<std::vector
             vectorToPush.push_back(positionRowColumn[0]);
             vectorToPush.push_back(iterateToLeft);
             this->legalSquares.push_back(convertIntsToAlgebraic(vectorToPush));
-        }
+        } // else if there's a piece from another color in the way you can capture it
+        // else if there's a piece from the same color in the way you need to stop
     }
+}
+
+std::vector<std::string> Piece::getLegalSquares() {
+    std::vector<std::string> vecToReturn;
     for(int i=0; i<this->legalSquares.size(); ++i) {
-        std::cout << legalSquares[i] << std::endl;
+        vecToReturn.push_back(this->legalSquares[i]);
     }
-    
+    return vecToReturn;
 }
 
 Bishop::Bishop(Color color) {
