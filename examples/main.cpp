@@ -19,7 +19,7 @@ int main() {
     // rook in f4 can move to e4
     // NEXT: ADJUST LEGAL MOVES
     int cont = 1;
-    while(true) {
+    while(true) { // do not run this loop for a long time. it contains memory leaks.
         ++cont;
         board.move("f4", "e4");
         board.move("e4", "f4");
